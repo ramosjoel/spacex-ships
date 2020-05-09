@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   Container,
   Dimmer,
+  Divider,
   Grid,
   Header,
+  Icon,
   Image,
   Loader,
   Menu,
@@ -86,7 +88,11 @@ const ShipsLayout = ({ activePage, ships, changePage }) => (
         />
         </Grid.Row>
         <Grid.Row>
-          <span role="img" aria-label="footer--man-with-laptop-emoji">👨‍💻</span> Made by <a style={{paddingLeft: '0.5em'}} href="https://ramosly.com">Joel Ramos</a> <span style={{paddingLeft: '0.5em'}}> © {year}</span>
+          <Divider />
+          <span style={{paddingRight: '0.5em'}} role="img" aria-label="footer--man-with-laptop-emoji">👨‍💻</span> Made by <a style={{paddingLeft: '0.5em'}} href="https://ramosly.com">Joel Ramos</a> <span style={{paddingLeft: '0.5em'}}> © {year}</span>
+        </Grid.Row>
+        <Grid.Row>
+          See the code in <a style={{paddingLeft: '0.5em'}} href="https://gitlab.com/joel.mariano.ramos/spacex-ships">GitLab</a> <Icon style={{paddingLeft: '0.5em'}} name='gitlab' size='large' />
         </Grid.Row>
     </Grid>
 
