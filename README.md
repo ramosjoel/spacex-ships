@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SpaceX Ships! 🚀
+
+Small react project to play with the [SpaceX GraphQL API](https://api.spacex.land/graphql/).
+
 
 ## Available Scripts
 
