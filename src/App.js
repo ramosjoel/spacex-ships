@@ -69,13 +69,14 @@ const ShipRow = ({ ship }) => {
 const ShipsLayout = ({ activePage, ships, changePage }) => (
   <Segment style={{marginTop: '3em'}}>
 
-    <Grid columns='equal' divided padded centered>
+    <Grid stackable columns='2' padded centered>
       <div>&nbsp;</div>
       {ships.map(ship => (
         <ShipRow key={ship.id} ship={ship} />
       ))}
       <Grid.Row>
         <Pagination
+          style={{margin: '2em'}}
           activePage={activePage}
           boundaryRange={0}
           // defaultActivePage={1}
