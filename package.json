@@ -31,5 +31,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "playwright": "1.2.0",
+    "qawolf": "1.2.0"
   }
 }
