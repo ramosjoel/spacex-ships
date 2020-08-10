@@ -1,0 +1,49 @@
+name: manual
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Base URL
+        required: false
+        default: https://spacex-ships.now.sh
+      browser:
+        description: Browser name
+        required: false
+        default: chromium
+
+jobs:
+  test:
+    name: ${{ matrix.browser }}
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - uses: microsoft/playwright-github-action@v1
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      # - name: Start local server
+      #   run: npm run start & npx wait-on http://localhost:3000
+      - run: npx qawolf test --headless
+        env:
+          # configure tests with environment variables
+          FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
+          BASE_URL: ${{ inputs.base_url }}
+          QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
+          QAW_BROWSER: ${{ inputs.browser }}
+          # you can also use GitHub secrets for environment variables
+          # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
+          # LOGIN_PASSWORD: ${{ secrets.PASSWORD }}
+      - name: Upload Artifacts
+        if: always()
+        uses: actions/upload-artifact@master
+        with:
+          name: qawolf-${{ inputs.browser }}
+          path: ${{ github.workspace }}/artifacts
