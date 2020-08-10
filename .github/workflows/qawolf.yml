@@ -17,6 +17,15 @@ jobs:
         browser: [chromium, firefox]
 
     steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: 'run tests'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - run: 'echo Found it!'
+        if: steps.check.outputs.triggered == 'true'
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - uses: microsoft/playwright-github-action@v1
@@ -27,9 +36,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
+        if: steps.check.outputs.triggered == 'true'
       # - name: Start local server
       #   run: npm run start & npx wait-on http://localhost:3000
       - run: npx qawolf test --headless
+        if: steps.check.outputs.triggered == 'true'
         env:
           # configure tests with environment variables
           FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
