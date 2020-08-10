@@ -1,21 +1,23 @@
-name: qawolf
+name: manual
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
-  push:
-    # test every branch
-    # edit below if you only want certain branches tested
-    branches: "*"
-  # schedule:
-  #   # test on schedule using cron syntax
-  #   - cron: "0 * * * *" # every hour
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Base URL
+        required: false
+        default: https://spacex-ships.now.sh
+      browser:
+        description: Browser name
+        required: false
+        default: chromium
+
 jobs:
   test:
     name: ${{ matrix.browser }}
     runs-on: ubuntu-18.04
-    
-    strategy:
-      matrix: 
-        browser: [chromium, firefox]
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -33,9 +35,9 @@ jobs:
         env:
           # configure tests with environment variables
           FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
-          BASE_URL: https://spacex-ships.now.sh
+          BASE_URL: ${{ inputs.base_url }}
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
-          QAW_BROWSER: ${{ matrix.browser }}
+          QAW_BROWSER: ${{ inputs.browser }}
           # you can also use GitHub secrets for environment variables
           # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
           # LOGIN_PASSWORD: ${{ secrets.PASSWORD }}
@@ -43,5 +45,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: qawolf-${{ matrix.browser }}
+          name: qawolf-${{ inputs.browser }}
           path: ${{ github.workspace }}/artifacts

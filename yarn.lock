@@ -4080,7 +4080,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-qawolf@^1.0.3:
+create-qawolf@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/create-qawolf/-/create-qawolf-1.2.0.tgz#bced8d5dc2dbd7cb123524efb8c4355dde83f84c"
   integrity sha512-f1Ihl7xHSL05MDtN/un+gH70HoZe8EeOxdg6YeAyTCZeuXFDOWszBehxBDeHjS3fofJLveuLFCoowjiL714VQQ==
@@ -4721,7 +4721,7 @@ dotenv-expand@5.1.0:
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
   integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
 
-dotenv@8.2.0:
+dotenv@8.2.0, dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
@@ -6426,7 +6426,7 @@ inquirer@^7.0.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-inquirer@^7.3.1, inquirer@^7.3.2:
+inquirer@^7.3.2:
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.3.3.tgz#04d176b2af04afc157a83fd7c100e98ee0aad003"
   integrity sha512-JG3eIAj5V9CwcGvuOmoo6LB9kbAYT8HXffUl6memuszlwDC/qvFAJw49XJ5NROSFNPxp3iQg1GqkFhaY/CR0IA==
@@ -9095,10 +9095,10 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-playwright-core@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.2.0.tgz#c010a5e2542cde937258d9eb18084fc55261d6f6"
-  integrity sha512-pLdoBlmk/8jGOEgqMS6DiQeyGnhp+rHk6us34HXQooPHJZcz3bIjUnEK6WHZu8KHYCd7A7X5hU1OC9nFoOD7Ww==
+playwright-core@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.2.1.tgz#24f46bf70b488f06da7646a60e4c5c89fd8f51d7"
+  integrity sha512-mpDr/Tllr1aGN2Q9FtsxsFOwBHBvwRjoIHafMKhdiq/F3UE52ra2HU4CYB0WdDpPIQqFV2zB+BZwNeAC/nc9Pw==
   dependencies:
     commander "^5.1.0"
     debug "^4.1.1"
@@ -10038,10 +10038,10 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qawolf@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/qawolf/-/qawolf-1.2.0.tgz#88af9b4892c712f696bd240d7573b020e95c5e28"
-  integrity sha512-t0ibKlBB7metWvsYQdNWRnrtxuOgqvp+WkGn0ziVojT79KdWVVZB+2G3HXIkOSN7tkgBOpKfytWiltDhXehgeg==
+qawolf@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/qawolf/-/qawolf-1.2.1.tgz#809b28b04a39e342870418b6d73cc88ac02b7bef"
+  integrity sha512-rKOAxDrkopGVtyAheFv762c4McVV6naBxBi8iTo4U76343izH4afMnSDPq+IvcxjxKH9Lx8R+oRH4zHrSdaOhQ==
   dependencies:
     "@qawolf/jest-reporter" "^0.1.0"
     an-array-of-english-words "^2.0.0"
@@ -10049,13 +10049,13 @@ qawolf@1.2.0:
     callsites "^3.1.0"
     chokidar "^3.4.0"
     commander "^5.1.0"
-    create-qawolf "^1.0.3"
+    create-qawolf "^1.2.0"
     debug "*"
     glob "^7.1.6"
-    inquirer "^7.3.1"
+    inquirer "^7.3.2"
     kleur "^4.0.2"
     open "^7.0.4"
-    playwright-core "1.2.0"
+    playwright-core "1.2.1"
     playwright-video "^2.3.0"
     split "^1.0.1"
     tempy "^0.5.0"

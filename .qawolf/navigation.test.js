@@ -1,4 +1,5 @@
 const qawolf = require("qawolf");
+require('dotenv').config()
 
 let browser;
 let page;
@@ -16,7 +17,7 @@ afterAll(async () => {
 });
 
 test("navigation", async () => {
-  await page.goto("https://spacex-ships.now.sh/");
+  await page.goto(process.env.BASE_URL);
   await page.click('css=[aria-label="Next item"]');
   await page.click('[data-tid="ship-header--bettyrgambarella"]');
 });
