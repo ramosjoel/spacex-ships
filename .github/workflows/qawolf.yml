@@ -15,15 +15,15 @@ jobs:
         browser: [chromium, firefox]
 
     steps:
-      - uses: khan/pull-request-comment-trigger@master
-        id: check
-        with:
-          trigger: 'run tests'
-          reaction: rocket
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-      - run: 'echo Found it!'
-        if: steps.check.outputs.triggered == 'true'
+      # - uses: khan/pull-request-comment-trigger@master
+      #   id: check
+      #   with:
+      #     trigger: 'run tests'
+      #     reaction: rocket
+      #   env:
+      #     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      # - run: 'echo Found it!'
+      #   if: steps.check.outputs.triggered == 'true'
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - uses: microsoft/playwright-github-action@v1
@@ -57,6 +57,7 @@ jobs:
   report:
     name: Report
     runs-on: ubuntu-18.04
+    needs: [test]
     steps:
       - name: List artifacts
         run: ls ${{ github.workspace }}/artifacts
