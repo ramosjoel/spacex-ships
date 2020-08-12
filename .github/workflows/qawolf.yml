@@ -57,10 +57,3 @@ jobs:
         with:
           name: qawolf-${{ matrix.browser }}
           path: ${{ github.workspace }}/artifacts
-  report:
-    name: Report
-    runs-on: ubuntu-18.04
-    needs: [test]
-    steps:
-      - name: List artifacts
-        run: ls ${{ github.workspace }}/artifacts
