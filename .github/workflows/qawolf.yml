@@ -1,5 +1,6 @@
 name: qawolf
 on:
+  push:
   pull_request:
     types: [opened]
   issue_comment:
@@ -33,11 +34,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
-        if: steps.check.outputs.triggered == 'true'
+        # if: steps.check.outputs.triggered == 'true'
       # - name: Start local server
       #   run: npm run start & npx wait-on http://localhost:3000
       - run: npx qawolf test --headless
-        if: steps.check.outputs.triggered == 'true'
+        # if: steps.check.outputs.triggered == 'true'
         env:
           # configure tests with environment variables
           FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
@@ -53,3 +54,9 @@ jobs:
         with:
           name: qawolf-${{ matrix.browser }}
           path: ${{ github.workspace }}/artifacts
+  report:
+    name: Report
+    runs-on: ubuntu-18.04
+    steps:
+      - name: List artifacts
+        run: ls ${{ github.workspace }}/artifacts
