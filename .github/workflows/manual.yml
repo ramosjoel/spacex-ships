@@ -32,16 +32,18 @@ jobs:
 
           if [[ -z "${{ github.event.inputs.base_url }}" ]]
           then
+            base_url=https://spacex-ships.now.sh
             echo "inputs.base_url not set. Must be running from a push."
-            echo "Setting BASE_URL to https://spacex-ships.now.sh"
-            echo ::set-env name=BASE_URL::https://spacex-ships.now.sh
+            echo "Setting BASE_URL to ${base_url}"
+            echo ::set-env name=BASE_URL::${base_url}
           fi
 
           if [[ -z "${{ github.event.inputs.browser }}" ]]
           then
+            browser=chromium
             echo "inputs.browser not set. Must be running from a push."
-            echo "Setting BROWSER to chromium"
-            echo ::set-env name=BROWSER::chromium
+            echo "Setting BROWSER to ${browser}"
+            echo ::set-env name=BROWSER::${browser}
           fi
       - uses: microsoft/playwright-github-action@v1
       - uses: actions/cache@v1
