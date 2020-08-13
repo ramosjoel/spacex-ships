@@ -33,6 +33,9 @@ jobs:
       #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       #     restore-keys: |
       #       ${{ runner.os }}-node-
+      - name: Get variables
+        id: vars
+        run: node ./ci/get-vars.js
       - run: npm install
         # if: steps.check.outputs.triggered == 'true'
       # - name: Start local server
