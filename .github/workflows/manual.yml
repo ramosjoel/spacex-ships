@@ -52,9 +52,9 @@ jobs:
         env:
           # configure tests with environment variables
           FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
-          BASE_URL: ${BASE_URL} # ${{ github.event.inputs.base_url }}
+          BASE_URL: ${{ env.BASE_URL }} # ${{ github.event.inputs.base_url }}
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
-          QAW_BROWSER: ${BROWSER} # ${{ github.event.inputs.browser }}
+          QAW_BROWSER: ${{ env.BROWSER }} # ${{ github.event.inputs.browser }}
           # you can also use GitHub secrets for environment variables
           # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
           # LOGIN_PASSWORD: ${{ secrets.PASSWORD }}
@@ -62,5 +62,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: qawolf-${{ github.event.inputs.browser }}
+          name: qawolf-${{ env.BROWSER }} # qawolf-${{ github.event.inputs.browser }}
           path: ${{ github.workspace }}/artifacts
