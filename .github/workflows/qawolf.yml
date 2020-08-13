@@ -1,6 +1,5 @@
 name: qawolf
 on:
-  push:
   pull_request:
     types: [opened]
   issue_comment:

@@ -25,8 +25,19 @@ jobs:
       - name: Get inputs
         id: workflow_inputs
         run: |
-          echo "Base URL: ${{ github.event.inputs.base_url }}"
-          echo "Browser:  ${{ github.event.inputs.browser }}"
+          if [[ -z "${{ github.event.inputs.base_url }}" ]]
+          then
+            echo "inputs.base_url not set. Must be running from a push."
+            echo "Setting BASE_URL to https://spacex-ships.now.sh"
+            echo ::set-env name=BASE_URL::https://spacex-ships.now.sh
+          fi
+
+          if [[ -z "${{ github.event.inputs.browser }}" ]]
+          then
+            echo "inputs.browser not set. Must be running from a push."
+            echo "Setting BROWSER to chromium"
+            echo ::set-env name=BROWSER::chromium
+          fi
       - uses: microsoft/playwright-github-action@v1
       - uses: actions/cache@v1
         with:
@@ -41,9 +52,9 @@ jobs:
         env:
           # configure tests with environment variables
           FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
-          BASE_URL: ${{ github.event.inputs.base_url }}
+          BASE_URL: ${BASE_URL} # ${{ github.event.inputs.base_url }}
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
-          QAW_BROWSER: ${{ github.event.inputs.browser }}
+          QAW_BROWSER: ${BROWSER} # ${{ github.event.inputs.browser }}
           # you can also use GitHub secrets for environment variables
           # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
           # LOGIN_PASSWORD: ${{ secrets.PASSWORD }}
