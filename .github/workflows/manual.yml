@@ -25,8 +25,8 @@ jobs:
       - name: Get inputs
         id: workflow_inputs
         run: |
-        echo "Base URL: ${{ github.event.inputs.base_url }}"
-        echo "Browser:  ${{ github.event.inputs.browser }}"
+          echo "Base URL: ${{ github.event.inputs.base_url }}"
+          echo "Browser:  ${{ github.event.inputs.browser }}"
       - uses: microsoft/playwright-github-action@v1
       - uses: actions/cache@v1
         with:
